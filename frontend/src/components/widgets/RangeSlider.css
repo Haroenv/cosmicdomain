@@ -1,0 +1,43 @@
+.range-slider__values {
+  margin-top: 1rem;
+}
+
+.DefaultProgressBar_progressBar {
+  background-color: #333;
+  position: absolute;
+  height: 4px;
+  top: 0px;
+}
+
+.DefaultHandle_handle {
+  width: 15px;
+  height: 14px;
+  background-color: #fcfcfc;
+  outline: none;
+  z-index: 2;
+  box-shadow: 0 1px 0px #e0e0e0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.DefaultHandle_handle__horizontal {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.DefaultBackground_background__horizontal {
+  background-color: #eee;
+  height: 4px;
+}
+
+.rheostat {
+  position: relative;
+  cursor: pointer;
+}
+
+.handleContainer {
+  height: 4px;
+  top: 0;
+  width: calc(100% - 15px);
+  position: absolute;
+}

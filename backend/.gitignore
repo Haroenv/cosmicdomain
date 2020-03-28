@@ -1,0 +1,16 @@
+venv/*
+media-root/*
+db.sqlite3
+git.py
+.DS_Store
+
+# Local settings file
+.env
+# No pycache
+*.pyc
+**/__pycache__/**
+
+# Ignore every file in migrations folder
+**/migrations/*
+# Except the init file
+!__init__.py
