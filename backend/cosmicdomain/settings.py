@@ -87,7 +87,15 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_WHITELIST = (
     'https://localhost:3000',
+    'https://127.0.0.1:8000'
 )
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://127.0.0.1:8000'
+]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 ROOT_URLCONF = 'cosmicdomain.urls'
 
@@ -150,6 +158,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -168,3 +177,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media-root")
+
+CKEDITOR_UPLOAD_PATH = 'media/ckeditor_uploads/'

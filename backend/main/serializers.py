@@ -5,4 +5,4 @@ from .models import Domain
 class DomainsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Domain
-        fields = ('name', 'price', 'industry')
+        fields = '__all__'

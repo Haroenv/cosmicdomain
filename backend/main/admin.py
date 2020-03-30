@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Domain, Industry
+from .models import Domain, Industry, Tag
 
 
 # Register your models here.
@@ -15,3 +15,5 @@ class IndustryAdmin(admin.ModelAdmin):
 admin.site.register(Domain, DomainAdmin)
 
 admin.site.register(Industry, IndustryAdmin)
+
+admin.site.register(Tag)
