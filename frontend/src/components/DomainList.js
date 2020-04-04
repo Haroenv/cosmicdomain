@@ -1,5 +1,4 @@
-import React, {Component} from "react";
-import {getPosts} from "../GetData";
+import React from "react";
 
 state = {
     domains: []

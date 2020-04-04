@@ -6,11 +6,12 @@ from .models import Domain
 
 @register(Domain)
 class DomainIndex(AlgoliaIndex):
-    fields = ('name', 'price', 'industry', 'thumbnail_image')
+    fields = ('name', 'price', 'industry', 'thumbnail_image', 'slug')
     settings = {
         'searchableAttributes': ['name', 'price', 'industry'],
         'attributesForFaceting': [
             'industry',
+            'price',
         ]
     }
     index_name = 'dev_NAME'

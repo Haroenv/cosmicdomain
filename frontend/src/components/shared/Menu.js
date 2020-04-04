@@ -18,10 +18,10 @@ const Menu = props => {
                   <NavLink href='/'>Home</NavLink>
                </NavItem>
                <NavItem>
-                  <NavLink href='/domains'>Domains</NavLink>
+                  <NavLink href='/domains/'>Domains</NavLink>
                </NavItem>
                <NavItem>
-                  <NavLink href='/how-it-works'>How It Works</NavLink>
+                  <NavLink href='/how-it-works/'>How It Works</NavLink>
                </NavItem>
                <NavItem>
                   <NavLink href='/components/'>Components</NavLink>

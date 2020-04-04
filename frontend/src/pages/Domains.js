@@ -1,34 +1,8 @@
 import React, {useRef} from "react";
-import {
-   InstantSearch,
-   HierarchicalMenu,
-   RefinementList,
-   SortBy,
-   Pagination,
-   ClearRefinements,
-   Highlight,
-   Hits,
-   connectRange,
-   HitsPerPage,
-   Panel,
-   Configure,
-   NumericMenu,
-   SearchBox,
-   Snippet
-} from "react-instantsearch-dom";
+import {InstantSearch, HierarchicalMenu, SortBy, Pagination, ClearRefinements, Highlight, Hits, HitsPerPage, Panel, Configure, SearchBox, Snippet} from "react-instantsearch-dom";
 import Menu from "../components/shared/Menu";
 import algoliasearch from "algoliasearch/lite";
-import {
-   ClearFiltersMobile,
-   NoResults,
-   ResultsNumberMobile,
-   // PriceSlider,
-   SaveFiltersMobile
-} from "../components/widgets";
-// import RangeSlider from "../components/widgets/CustomRangeSlider";
-// import PropTypes from "prop-types";
-
-// import RangeSlider from "../components/widgets/RangeSlider";
+import {ClearFiltersMobile, NoResults, ResultsNumberMobile, PriceSlider, SaveFiltersMobile} from "../components/widgets";
 
 import withURLSync from "../URLSync";
 import {formatNumber} from "../utils";
@@ -36,28 +10,28 @@ import {Container, Row, Col} from "reactstrap";
 
 const searchClient = algoliasearch("WYN0L8GBZX", "e4f307c4ea4782cbb93a5f12efdce800");
 
-// const CustomRangeSlider = connectRange(RangeSlider);
-
 const Hit = ({hit}) => (
-   <article className='hit'>
-      <div className='hit-image-container'>
-         <img src={"http://127.0.0.1:8000/media/" + hit.thumbnail_image} alt={hit.name} className='hit-image' />
-      </div>
+   <a href={hit.slug}>
+      <article className='hit'>
+         <div className='hit-image-container'>
+            <img src={"http://127.0.0.1:8000/media/" + hit.thumbnail_image} alt={hit.name} className='hit-image' />
+         </div>
 
-      <div className='hit-info-container'>
-         <p className='hit-Industry'>{hit.industry}</p>
-         <Highlight attribute='name' className='sm-title' hit={hit} />
-         <p className='hit-description'>
-            <Snippet attribute='description' tagName='mark' hit={hit} />
-         </p>
-
-         <footer>
-            <p>
-               <span className='hit-em'>$</span> {formatNumber(hit.price)}{" "}
+         <div className='hit-info-container'>
+            <p className='hit-Industry'>{hit.industry}</p>
+            <Highlight attribute='name' className='sm-title' hit={hit} />
+            <p className='hit-description'>
+               <Snippet attribute='description' tagName='mark' hit={hit} />
             </p>
-         </footer>
-      </div>
-   </article>
+
+            <footer>
+               <p>
+                  <span className='hit-em'>$</span> {formatNumber(hit.price)}{" "}
+               </p>
+            </footer>
+         </div>
+      </article>
+   </a>
 );
 
 const Domains = props => {
@@ -95,13 +69,7 @@ const Domains = props => {
    }
 
    return (
-      <InstantSearch
-         searchClient={searchClient}
-         indexName='dev_NAME'
-         // searchState={props.searchState}
-         // createURL={props.createURL}
-         // onSearchStateChange={props.onSearchStateChange}
-      >
+      <InstantSearch searchClient={searchClient} indexName='dev_NAME' searchState={props.searchState} createURL={props.createURL} onSearchStateChange={props.onSearchStateChange}>
          <header className='header bg-standard' ref={headerRef}>
             <Container>
                <Row>
@@ -179,16 +147,7 @@ const Domains = props => {
                      </Panel>
 
                      <Panel header='Price'>
-                        {/* <PriceSlider attribute='price' /> */}
-                        <NumericMenu
-                           attribute='price'
-                           items={[
-                              {label: "<= $10", end: 10},
-                              {label: "$10 - $100", start: 10, end: 100},
-                              {label: "$3000 - $10000", start: 3000, end: 10000},
-                              {label: ">= $500", start: 500}
-                           ]}
-                        />
+                        <PriceSlider attribute='price' />
                      </Panel>
                   </div>
                </section>

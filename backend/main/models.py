@@ -24,7 +24,7 @@ class Tag(models.Model):
 
 class Domain(models.Model):
     name = models.CharField(_("Domain name"), max_length=120)
-    price = models.CharField(_("Price"), max_length=120)
+    price = models.IntegerField(_("Price"))
     slug = models.SlugField(_("Domain slug"), null=True, blank=True, default=None, max_length=50)
     thumbnail_image = models.FileField(_("Thumbnail image"), upload_to='domain-images/%Y/%m/%d/', null=True)
     tags = models.ManyToManyField(Tag, verbose_name=_("Tags"), related_name="domain")
