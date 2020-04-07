@@ -16,6 +16,7 @@ function App(props) {
          </Switch>
          <Route exact path='/' component={Home} />
          <Route exact path='/domains/' component={Domains} />
+         <Route exact path='/domains/search/*' component={Domains} />
       </Router>
    );
 }

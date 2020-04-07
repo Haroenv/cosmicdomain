@@ -44,9 +44,16 @@ const PriceSlider = ({min, max, refine, currentRefinement, canRefine}) => {
       setTicksValues([currentRefinement.min, currentRefinement.max]);
    }, [currentRefinement]);
 
-   const onChange = values => {
-      refine({min: values[0], max: values[1]});
-   };
+   const onChange = ([min, max]) => {
+      if (Number.isNaN(min) && Number.isNaN(max)) {
+         return;
+      }
+
+      refine({
+        min: Number.isNaN(min) ? undefined : min,
+        max: Number.isNaN(max) ? undefined : max,
+      });
+    };
 
    if (!canRefine || ticksValues[0] === undefined || ticksValues[1] === undefined) {
       return null;

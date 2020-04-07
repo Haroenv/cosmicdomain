@@ -57,19 +57,26 @@ function getCategoryName(slug) {
 }
 
 const searchStateToURL = searchState => {
+   const price = searchState.range &&
+      searchState.range.price &&
+      `${searchState.range.price.min || ''}:${searchState.range.price.max || ''}`
+
    const routeState = {
       query: searchState.query,
       page: String(searchState.page),
-      industry: searchState.hierarchicalMenu && searchState.hierarchicalMenu["industry"],
-      price: searchState.range && searchState.range.price && `${searchState.range.price.min || ""}:${searchState.range.price.max || ""}`,
+      industry:
+        searchState.hierarchicalMenu && searchState.hierarchicalMenu['industry'],
+      price:
+        price !== ':' ? price : undefined,
       sortBy: searchState.sortBy,
-      hitsPerPage: (searchState.hitsPerPage && String(searchState.hitsPerPage)) || undefined
-   };
+      hitsPerPage:
+        (searchState.hitsPerPage && String(searchState.hitsPerPage)) || undefined,
+    };
 
    const {protocol, hostname, port = "", pathname, hash} = window.location;
    const portWithPrefix = port === "" ? "" : `:${port}`;
    const urlParts = window.location.href.match(/^(.*?)\/search/);
-   const baseUrl = (urlParts && urlParts[0]) || `${protocol}//${hostname}${portWithPrefix}${pathname}search`;
+   const baseUrl = (urlParts && urlParts[0]) || `${protocol}//${hostname}${portWithPrefix}${pathname}${pathname[pathname.length -1] === '/' ? '' : '/'}search`;
 
    const industryPath = routeState.industry ? `${getCategorySlug(routeState.industry)}/` : "";
    const queryParameters = {};
